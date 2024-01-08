@@ -11,7 +11,7 @@ import { v4 as uuid } from "uuid";
 import db, { storage } from "../../firebase";
 import Styles from "./Style";
 import swal from "@sweetalert/with-react";
-
+import axios from "axios";
 const Form = () => {
   const classes = Styles();
   const { displayName, photoURL } = useSelector((state) => state.user);
@@ -42,43 +42,64 @@ const Form = () => {
       .then(() => resetState());
   };
 
-  const handleSubmitButton = (e) => {
+  const handleSubmitButton = async (e) => {
     e.preventDefault();
-
+    console.log(e)
     // verify atleast one of the input fields are not empyt
     if (uploadData.description || uploadData.file.data) {
       // if file input is true...upload the file to Fire-Store
-      if (uploadData.file.data) {
-        const id = uuid();
-        const uploadTask = storage.ref(`posts/${id}`).putString(uploadData.file.data, "data_url");
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const value = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-            setProgress(value);
+      // if (uploadData.file.data) {
+      //   const id = uuid();
+      //   const uploadTask = storage.ref(`posts/${id}`).putString(uploadData.file.data, "data_url");
+      //   uploadTask.on(
+      //     "state_changed",
+      //     (snapshot) => {
+      //       const value = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      //       setProgress(value);
+      //     },
+
+      //     (error) => {
+      //       console.log("Error here")
+      //       alert(error);
+      //     },
+
+      //     () => {
+      //       storage
+      //         .ref("posts")
+      //         .child(id)
+      //         .getDownloadURL()
+      //         .then((url) => uploadToFirebaseDB(url));
+      //     }
+      //   );
+
+      //   // do not go further..
+      //   return;
+      // }
+      // // if not file input provided
+      // uploadToFirebaseDB(uploadData.file.data);
+
+      try {
+        let s1 = `${process.env.REACT_APP_BACKEND}`;
+
+        const requestOptions = {
+          headers: {
+            "Content-Type": "application/json",
           },
+        };
+        console.log(uploadData)
+        const d = await axios.post(s1 + 'post', { username: displayName, timestamp: Date.now(), description: uploadData.description }, requestOptions);
+        console.log(d);
+        // setPosts(d.data);
 
-          (error) => {
-            alert(error);
-          },
-
-          () => {
-            storage
-              .ref("posts")
-              .child(id)
-              .getDownloadURL()
-              .then((url) => uploadToFirebaseDB(url));
-          }
-        );
-
-        // do not go further..
-        return;
       }
-      // if not file input provided
-      uploadToFirebaseDB(uploadData.file.data);
+      catch (err) {
+        console.log(err);
+      }
+      // e.target.value = ""
     } else {
       swal("😕 Input field can not be empty");
     }
+    resetState()
   };
 
   // if file name is too long.. compress it
@@ -190,7 +211,10 @@ const Form = () => {
     <Paper className={classes.upload}>
       <div className={classes.upload__header}>
         <Avatar src={photoURL} />
-        <form className={classes.header__form} onSubmit={handleSubmitButton}>
+        <form className={classes.header__form} onSubmit={(e) => {
+          handleSubmitButton(e)
+
+        }}>
           <input
             placeholder={`What's on your mind, ${displayName}?`}
             value={uploadData.description}
@@ -210,7 +234,7 @@ const Form = () => {
             hidden
             onChange={(e) => imageUploadHandler(e, "video")}
           />
-          <button type="submit">Post</button>
+          <button type="submit" >Post</button>
         </form>
       </div>
       {uploadData.file.name && !progress && (

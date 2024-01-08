@@ -18,16 +18,18 @@ const Stories = () => {
 
   return (
     <div className={classes.stories}>
-      {users.map(({ id, fullName, imageUrl }) => (
-        <Story
-          key={id}
-          bgImage={`https://source.unsplash.com/random/${id}`}
-          profileImage={imageUrl}
-          title={fullName}
-        />
-      ))}
+
     </div>
   );
 };
 
 export default Stories;
+
+// {users.map(({ id, fullName, imageUrl }) => (
+//   <Story
+//     key={id}
+//     bgImage={`https://source.unsplash.com/random/${id}`}
+//     profileImage={imageUrl}
+//     title={fullName}
+//   />
+// ))}

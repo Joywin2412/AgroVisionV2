@@ -2,11 +2,22 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import App from "./App";
+import App2 from "./App2";
 import "./style.css";
+import { BrowserRouter } from "react-router-dom";
+import { AppProvider } from "./pages/context";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <>
+
+    <BrowserRouter>
+      <AppProvider>
+        <App2 />
+      </AppProvider>
+    </BrowserRouter>
+  </>,
   document.getElementById("root")
 );
+// <Provider store={store}>
+// <App />
+// </Provider>

@@ -1,5 +1,5 @@
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, Hidden, Paper } from "@material-ui/core";
 import Login from "./components/login/Login";
@@ -13,8 +13,9 @@ import { LoginAction, LogoutAction } from "./store/actions/auth";
 import { auth } from "./firebase";
 import { lightPrimary } from "./assets/Colors";
 import Style from "./Style";
-
+import Navbar from './pages/Navbar.js';
 const App = () => {
+  const [profile, setProfile] = useState(1)
   const dispatch = useDispatch();
 
   const { displayName } = useSelector((state) => state.user);
@@ -40,6 +41,7 @@ const App = () => {
   const classes = Style();
   return (
     <ThemeProvider theme={muiTheme}>
+      <Navbar profile={profile} setProfile={setProfile} show={1} />
       <Paper
         elevation={0}
         className={classes.root}
@@ -63,10 +65,7 @@ const App = () => {
               </Hidden>
               <Grid item container className={classes.body__feed} xs={12} sm={8} md={6}>
                 {/* ----Feed---- */}
-                <Grid item container className={classes.feed__stories}>
-                  {/* ----Stories---- */}
-                  <Stories />
-                </Grid>
+
                 <Grid item container className={classes.feed__form}>
                   {/* ----Upload Form---- */}
                   <Form />

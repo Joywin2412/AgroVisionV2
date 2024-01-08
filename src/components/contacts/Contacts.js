@@ -30,7 +30,7 @@ const Contacts = () => {
         </div>
         <Divider />
         <div className={classes.contacts__tab}>
-          <h4>Contacts</h4>
+          <h4>Friends</h4>
           <SearchIcon />
           <MoreHorizIcon />
         </div>
