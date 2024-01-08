@@ -20,6 +20,7 @@ const initialState = {
   polygon_id: "",
   // obj: [],
   loadProfile: 1,
+  posts: []
 };
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -80,6 +81,9 @@ const AppProvider = ({ children }) => {
     console.log("I set loading");
     dispatch({ type: "setLoading", payload: e });
   };
+  const setPosts = (e) => {
+    dispatch({ type: "setPosts", payload: e });
+  }
   return (
     <AppContext.Provider
       value={{
@@ -98,6 +102,7 @@ const AppProvider = ({ children }) => {
         setId,
         setObj,
         setLoading,
+        setPosts
       }}
     >
       {/* returning an object is allowed from context to get a global value */}

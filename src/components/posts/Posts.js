@@ -4,15 +4,16 @@ import FlipMove from "react-flip-move";
 import Post from "./post/Post";
 import axios from "axios";
 import db from "../../firebase";
+import { useGlobalContext } from "../../pages/context";
 
 const Posts = () => {
   const classes = Style();
 
-  const [posts, setPosts] = useState([]);
+  const { posts, setPosts } = useGlobalContext();
   // Make this above global context 
   const fetchPosts = async () => {
     try {
-      let s1 = `${process.env.REACT_APP_BACKEND}`;
+      let s1 = `${process.env.REACT_APP_BACKEND2}`;
 
       const requestOptions = {
         headers: {
@@ -20,8 +21,18 @@ const Posts = () => {
         },
       };
       const d = await axios.get(s1 + 'getAll', requestOptions);
-      console.log(d);
-      setPosts(d.data);
+      let arr = d.data;
+      console.log(arr)
+      arr.sort((a, b) => {
+        // First, compare based on likes
+        if (a.likes !== b.likes) {
+          return b.likes - a.likes; // Sort in descending order of likes
+        }
+
+        // If likes are equal, compare based on createdAt
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+      setPosts(arr);
     }
     catch (err) {
       console.log(err);

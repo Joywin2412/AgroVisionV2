@@ -11,13 +11,59 @@ const Contacts = () => {
   const classes = Style();
 
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState([]);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const response = await axios.get("https://thronesapi.com/api/v2/Characters/");
-      setUsers(response.data);
+  const fetchOptions = async () => {
+    let name, email, accesstoken, id_now;
+    const loggedInUser = localStorage.getItem("user");
+    const polygonUser = localStorage.getItem("polygon");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      accesstoken = foundUser.token;
+      name = foundUser.name;
+      email = foundUser.email;
+    }
+    if (polygonUser) {
+      const foundUser = JSON.parse(polygonUser);
+      id_now = foundUser.polygon_id;
+    }
+    let s = `${process.env.REACT_APP_BACKEND}`;
+    let s1 = s + `/user/options`;
+    let requestOptions = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accesstoken}`,
+      },
     };
-    fetchUsers();
+    let val = JSON.stringify({
+      name: name,
+      email: email,
+    });
+    try {
+
+
+      let d = await axios.post(
+        s + `/user/acceptList`,
+        JSON.stringify({ email1: email }),
+        requestOptions
+      );
+      console.log(d.data.length)
+      if ((d.data.length) !== 0) {
+        let arr = d.data;
+
+        console.log("This is friends", arr);
+        console.log(arr)
+        setUsers(arr);
+
+        setLoading(false);
+      }
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchOptions();
   }, []);
 
   return (
@@ -34,21 +80,9 @@ const Contacts = () => {
           <SearchIcon />
           <MoreHorizIcon />
         </div>
-        {users.map(({ id, fullName, imageUrl }) => (
+        {users.map(({ Name }) => (
           <InfoBar
-            key={id}
-            Source={
-              <Tooltip placement="left" title={fullName} arrow>
-                <Avatar src={imageUrl} size={100} />
-              </Tooltip>
-            }
-            title={fullName}
-            online={true}
-            lastSeen={
-              Math.floor(Math.random() * (3 - 1 + 1)) + 1 === 2 &&
-              `${Math.floor(Math.random() * 10) + 1} h`
-            }
-            noTransform={true}
+            title={Name}
           />
         ))}
       </Scrollbars>

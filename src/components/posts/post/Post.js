@@ -29,7 +29,7 @@ const Post = forwardRef(
     const [dislikedArray, setDislikedArray] = useState([])
     const showPostsLiked = async () => {
       try {
-        let s1 = `${process.env.REACT_APP_BACKEND}`;
+        let s1 = `${process.env.REACT_APP_BACKEND2}`;
 
         const requestOptions = {
           headers: {
@@ -61,7 +61,7 @@ const Post = forwardRef(
 
     const likeCountHandler = async (likes, show, like) => {
       try {
-        let s1 = `${process.env.REACT_APP_BACKEND}`;
+        let s1 = `${process.env.REACT_APP_BACKEND2}`;
 
         const requestOptions = {
           headers: {

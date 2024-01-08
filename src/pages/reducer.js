@@ -66,6 +66,10 @@ const reducer = (state, action) => {
 
     return { ...state, loadProfile: 0 };
   }
+  if (action.type === "setPosts") {
+    const h1 = action.payload;
+    return { ...state, posts: h1 }
+  }
 };
 
 export default reducer;

@@ -1,5 +1,5 @@
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useGlobalContext } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, Hidden, Paper } from "@material-ui/core";
 import Login from "./components/login/Login";
@@ -47,43 +47,41 @@ const App = () => {
         className={classes.root}
         style={{ backgroundColor: !mode && lightPrimary }}
       >
-        {!displayName ? (
-          <Login />
-        ) : (
-          <Grid className={classes.app}>
-            <Grid item container className={classes.app__header}>
-              {/* ----Header---- */}
-              <Header />
-            </Grid>
-            <Grid item container className={classes.app__body}>
-              {/* ----Body---- */}
-              <Hidden smDown>
-                <Grid item container className={classes.body__left} md={3}>
-                  {/* ----Sidebar---- */}
-                  <Sidebar />
-                </Grid>
-              </Hidden>
-              <Grid item container className={classes.body__feed} xs={12} sm={8} md={6}>
-                {/* ----Feed---- */}
 
-                <Grid item container className={classes.feed__form}>
-                  {/* ----Upload Form---- */}
-                  <Form />
-                </Grid>
-                <Grid item container className={classes.feed__posts}>
-                  {/* ----Posts---- */}
-                  <Posts />
-                </Grid>
-              </Grid>
-              <Hidden smDown>
-                <Grid item container className={classes.body__right} md={3}>
-                  {/* ----Right sidebar---- */}
-                  <Contacts />
-                </Grid>
-              </Hidden>
-            </Grid>
+        <Grid className={classes.app}>
+          <Grid item container className={classes.app__header}>
+            {/* ----Header---- */}
+
           </Grid>
-        )}
+          <Grid item container className={classes.app__body}>
+            {/* ----Body---- */}
+            <Hidden smDown>
+              <Grid item container className={classes.body__left} md={3}>
+                {/* ----Sidebar---- */}
+                <Sidebar />
+              </Grid>
+            </Hidden>
+            <Grid item container className={classes.body__feed} xs={12} sm={8} md={6}>
+              {/* ----Feed---- */}
+
+              <Grid item container className={classes.feed__form}>
+                {/* ----Upload Form---- */}
+                <Form />
+              </Grid>
+              <Grid item container className={classes.feed__posts}>
+                {/* ----Posts---- */}
+                <Posts />
+              </Grid>
+            </Grid>
+            <Hidden smDown>
+              <Grid item container className={classes.body__right} md={3}>
+                {/* ----Right sidebar---- */}
+                <Contacts />
+              </Grid>
+            </Hidden>
+          </Grid>
+        </Grid>
+
       </Paper>
     </ThemeProvider>
   );

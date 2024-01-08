@@ -12,10 +12,13 @@ import db, { storage } from "../../firebase";
 import Styles from "./Style";
 import swal from "@sweetalert/with-react";
 import axios from "axios";
+import { useGlobalContext } from "../../pages/context";
+import { useEffect } from "react";
 const Form = () => {
   const classes = Styles();
   const { displayName, photoURL } = useSelector((state) => state.user);
-
+  const { posts, setPosts } = useGlobalContext();
+  const { name, setName } = useGlobalContext();
   const [uploadData, setUploadData] = useState({
     description: "",
     file: {
@@ -24,15 +27,40 @@ const Form = () => {
       data: "",
     },
   });
+  const [progress, setProgress] = useState(0);
+  const fetchPosts = async () => {
+    try {
+      let s1 = `${process.env.REACT_APP_BACKEND2}`;
 
-  const [progress, setProgress] = useState("");
+      const requestOptions = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const d = await axios.get(s1 + 'getAll', requestOptions);
+      let arr = d.data;
+      console.log(arr)
+      arr.sort((a, b) => {
+        // First, compare based on likes
+        if (a.likes !== b.likes) {
+          return b.likes - a.likes; // Sort in descending order of likes
+        }
 
+        // If likes are equal, compare based on createdAt
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+      setPosts(arr);
+    }
+    catch (err) {
+      console.log(err);
+    }
+  }
   const uploadToFirebaseDB = (fileData) => {
     // uploading to collection called posts
     db.collection("posts")
       .add({
         profile: photoURL,
-        username: displayName,
+        username: name,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         description: uploadData.description,
         fileType: uploadData.file.type,
@@ -79,7 +107,7 @@ const Form = () => {
       // uploadToFirebaseDB(uploadData.file.data);
 
       try {
-        let s1 = `${process.env.REACT_APP_BACKEND}`;
+        let s1 = `${process.env.REACT_APP_BACKEND2}`;
 
         const requestOptions = {
           headers: {
@@ -87,10 +115,10 @@ const Form = () => {
           },
         };
         console.log(uploadData)
-        const d = await axios.post(s1 + 'post', { username: displayName, timestamp: Date.now(), description: uploadData.description }, requestOptions);
+        const d = await axios.post(s1 + 'post', { username: name, timestamp: Date.now(), description: uploadData.description }, requestOptions);
         console.log(d);
         // setPosts(d.data);
-
+        fetchPosts();
       }
       catch (err) {
         console.log(err);
