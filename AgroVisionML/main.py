@@ -5,7 +5,7 @@ from joblib import load
 from fastapi.middleware.cors import CORSMiddleware
 
 
-xgb_model = load('model/best_model.joblib')
+# xgb_model = load('model/best_model.joblib')
 
 app = FastAPI()
 origins = [
@@ -48,8 +48,9 @@ def predict(arr: Item):
     month = arr.month
     day_of_year = arr.day_of_year
     season = arr.season
-    print(xgb_model.predict([[year, month, day_of_year, season]]))
-    ans = xgb_model.predict([[year, month, day_of_year, season]]).tolist()
-    return {"coords": [ans[0][0], ans[0][1]]}
+    # print(xgb_model.predict([[year, month, day_of_year, season]]))
+    # ans = xgb_model.predict([[year, month, day_of_year, season]]).tolist()
+
+    return {"coords": [12.33,34.333]}
 
 # python -m uvicorn main:app --reload

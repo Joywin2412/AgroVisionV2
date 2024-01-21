@@ -78,6 +78,7 @@ function Component({ profile, setProfile, ...props }) {
           <a href="/#CARD">services</a>
           <a href="/about">About Us</a>
           <a href="/blog">Blog</a>
+          <a href="/locust">Locust</a>
           {email ? (
             <button
               className="logout-btn"

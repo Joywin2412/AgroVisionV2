@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 export default function Locust() {
-  const [locustPoints, setLocusPoints] = useState([
-    [51.505, -0.09],
-    [52.505, -0.06],
-  ]);
+  const point = [30.27168127601383, 70.83242851242301];
+  const [locustPoints, setLocusPoints] = useState([point]);
 
-  const [center, setCenter] = useState([51.505, -0.09]);
+  const [center, setCenter] = useState(point);
 
   return (
     <div

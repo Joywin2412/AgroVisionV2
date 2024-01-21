@@ -10,16 +10,16 @@ import About from "./pages/about.js";
 import Weather from "./pages/weather.js";
 import UserProfile from "./pages/otherprofile.js";
 import Crops from "./pages/localcrops.js";
-import Stores from "./pages/storeSection.js"
-import App2 from "./App2.js"
+import Stores from "./pages/storeSection.js";
+import App2 from "./App2.js";
 import store from "./store/index.js";
 import { Provider } from "react-redux";
+import Locust from "./pages/Locust.js";
 
 function App() {
   return (
     <>
       <div className="App">
-
         <Routes>
           <Route path="/login" element={<Home2 />} />
           <Route path="/" element={<Home />} />
@@ -29,10 +29,8 @@ function App() {
           <Route path="/weather" element={<Weather />} />
           <Route path="/localcrops" element={<Crops />} />
           <Route path="/StoreSection" element={<Stores />} />
-
+          <Route path="/locust" element={<Locust />} />
         </Routes>
-
-
       </div>
       <>
         <Provider store={store}>
@@ -78,4 +76,3 @@ export default App;
 // Feature : Modify the markers
 // Friends feature which will involve phone feature.
 // setLoading time for the map check
-

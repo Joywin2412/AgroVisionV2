@@ -10,7 +10,7 @@ import Stories from "./components/stories/Stories.js";
 import Form from "./components/form/Form.js";
 import Posts from "./components/posts/Posts.js";
 import { LoginAction, LogoutAction } from "./store/actions/auth.js";
-import { auth } from "./firebase.js";
+// import { auth } from "./firebase.js";
 import { lightPrimary } from "./assets/Colors.js";
 import Style from "./Style.js";
 import Navbar from "./pages/Navbar.js";
@@ -28,15 +28,15 @@ const App = () => {
     },
   });
 
-  useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        dispatch(LoginAction(authUser));
-      } else {
-        dispatch(LogoutAction());
-      }
-    });
-  }, [dispatch]);
+  // useEffect(() => {
+  //   // auth.onAuthStateChanged((authUser) => {
+  //     if (authUser) {
+  //       dispatch(LoginAction(authUser));
+  //     } else {
+  //       dispatch(LogoutAction());
+  //     }
+  //   });
+  // }, [dispatch]);
 
   const classes = Style();
   return (
