@@ -10,10 +10,11 @@ import About from "./pages/about.js";
 import Weather from "./pages/weather.js";
 import UserProfile from "./pages/otherprofile.js";
 import Crops from "./pages/localcrops.js";
-import Stores from "./pages/storeSection.js"
-import App from "./App.js"
+import Stores from "./pages/storeSection.js";
+import App from "./App.js";
 import store from "./store";
 import { Provider } from "react-redux";
+import Locust from "./pages/Locust.js";
 
 function App2() {
   return (
@@ -29,6 +30,7 @@ function App2() {
           <Route path="/localcrops" element={<Crops />} />
           <Route path="/StoreSection" element={<Stores />} />
           <Route path="/blog" element={<App />} />
+          <Route path="/locust" element={<Locust />} />
         </Routes>
       </Provider>
     </div>
@@ -68,4 +70,3 @@ export default App2;
 // Feature : Modify the markers
 // Friends feature which will involve phone feature.
 // setLoading time for the map check
-
