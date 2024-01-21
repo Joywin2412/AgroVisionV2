@@ -47,7 +47,7 @@ ul li a:hover {
 }
 
 .social-links li a i {
-  background-color:#064635;
+  background-color: #064635;
   color: #fff;
   display: inline-flex;
   justify-content: center;
@@ -67,14 +67,14 @@ ul li a:hover {
   color: #000;
 }
 
-.link
-{
+.link {
   color: #0F6292;
   text-decoration: underline;
 }
-.copyright{
+
+.copyright {
   font-size: small;
-  color:#666;
+  color: #666;
   padding-top: 10px;
   padding-bottom: 0px;
   position: absolute;

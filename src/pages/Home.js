@@ -12,7 +12,7 @@ import "./FarmSection.css";
 // import videos from "./videos/video-3.mp4";
 import Card from "./Card";
 import Footer from "./Footer.js";
-import "./form.css";
+import "./form12.css";
 import Develop from "./develop.js";
 const Home = () => {
   const [toggle, setToggle] = useState(0);

@@ -5,7 +5,7 @@ import Data2 from "./datacrops.js";
 import { useGlobalContext } from "./context.js";
 import Loading from "./Loading.js";
 import axios from "axios";
-import "./form.css";
+import "./form12.css";
 
 // import './App.css';
 
@@ -153,7 +153,14 @@ function Forms({
   if (form == 0 && show == 0) {
     return (
       <div className="temp">
-        <form>
+        <form style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '20px',
+
+        }}>
           <label htmlFor="h1"> Fill the form to estimate your crop production </label>
           {/* <input type="text" id="h1" /> */}
 
@@ -217,7 +224,7 @@ function Forms({
         </div>
 
 
-      </div>
+      </div >
     );
   }
   else if (form == 0 && show == 1) {

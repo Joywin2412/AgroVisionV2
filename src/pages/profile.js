@@ -462,7 +462,15 @@ function Profile() {
             <label> Beta Feature : Agro Bot (Navigational Bot)</label>
             {chat == 0 ?
               <>
-                <input type="text" onChange={(e) => setChatText(e.target.value)} />
+                <input type="text" onChange={(e) => setChatText(e.target.value)} style={{
+                  marginBottom: '20px',
+                  padding: '10px',
+                  border: 'none',
+                  borderRadius: '5px',
+                  boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+                  fontSize: '1.2rem',
+                  width: '95%',
+                }} />
                 <input type="submit" onClick={(e) => {
                   e.preventDefault();
                   chatHandler();

@@ -78,12 +78,30 @@ const Login = (props) => {
         onChange={(e) => {
           setEmail(e.target.value);
         }}
+        style={{
+          marginBottom: '20px',
+          padding: '10px',
+          border: 'none',
+          borderRadius: '5px',
+          boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+          fontSize: '1.2rem',
+          width: '95%',
+        }}
       ></input>
       <input
         placeholder="Enter your password"
         type={show2 ? "text" : "password"}
         onChange={(e) => {
           setPassword(e.target.value);
+        }}
+        style={{
+          marginBottom: '20px',
+          padding: '10px',
+          border: 'none',
+          borderRadius: '5px',
+          boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+          fontSize: '1.2rem',
+          width: '95%',
         }}
       ></input>
       <button
@@ -94,7 +112,16 @@ const Login = (props) => {
       >
         {show2 ? "Hide" : "Show"}
       </button>
-      <input type="submit" onClick={submitHandler}></input>
+      <input type="submit" onClick={submitHandler}
+        style={{
+          marginBottom: '20px',
+          padding: '10px',
+          border: 'none',
+          borderRadius: '5px',
+          boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+          fontSize: '1.2rem',
+          width: '95%',
+        }}></input>
     </div>
   );
 };

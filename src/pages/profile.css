@@ -5,6 +5,7 @@
   margin-top: 50px;
   float: left;
 }
+
 .noti {
   border: 1px solid black;
   float: inline-end;
@@ -25,15 +26,18 @@
   width: 600px;
   color: rgb(86, 83, 83);
 }
+
 .addfriend {
   width: 120px;
 }
+
 .profile-card {
   background-color: white;
   text-align: left;
   padding-left: 100px;
   font-size: medium;
 }
+
 .profile-info {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -53,6 +57,7 @@
 .profile-email {
   font-size: 18px;
 }
+
 .del {
   display: inline-block;
   width: 80px;

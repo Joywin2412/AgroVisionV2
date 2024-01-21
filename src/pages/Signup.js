@@ -27,7 +27,7 @@ const Sign = (props) => {
   const [rem, setRem] = useState(0);
   const [address, setAddress] = useState();
   const [phone, setPhone] = useState("");
-  const fetchLocation = async () => {};
+  const fetchLocation = async () => { };
 
   const submitHandler = async () => {
     console.log("What");
@@ -99,6 +99,15 @@ const Sign = (props) => {
           onChange={(e) => {
             setName(e.target.value);
           }}
+          style={{
+            marginBottom: '20px',
+            padding: '10px',
+            border: 'none',
+            borderRadius: '5px',
+            boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+            fontSize: '1.2rem',
+            width: '95%',
+          }}
         ></input>
 
         <input
@@ -107,6 +116,15 @@ const Sign = (props) => {
           onChange={(e) => {
             setEmail(e.target.value);
           }}
+          style={{
+            marginBottom: '20px',
+            padding: '10px',
+            border: 'none',
+            borderRadius: '5px',
+            boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+            fontSize: '1.2rem',
+            width: '95%',
+          }}
         ></input>
 
         <input
@@ -114,6 +132,15 @@ const Sign = (props) => {
           type={show ? "text" : "password"}
           onChange={(e) => {
             setPassword(e.target.value);
+          }}
+          style={{
+            marginBottom: '20px',
+            padding: '10px',
+            border: 'none',
+            borderRadius: '5px',
+            boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+            fontSize: '1.2rem',
+            width: '95%',
           }}
         ></input>
         <button
@@ -135,6 +162,15 @@ const Sign = (props) => {
           onChange={(e) => {
             setConfirmPassword(e.target.value);
           }}
+          style={{
+            marginBottom: '20px',
+            padding: '10px',
+            border: 'none',
+            borderRadius: '5px',
+            boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+            fontSize: '1.2rem',
+            width: '95%',
+          }}
         ></input>
         <button
           className="but"
@@ -151,6 +187,15 @@ const Sign = (props) => {
           onChange={(e) => {
             setAddress(e.target.value);
           }}
+          style={{
+            marginBottom: '20px',
+            padding: '10px',
+            border: 'none',
+            borderRadius: '5px',
+            boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+            fontSize: '1.2rem',
+            width: '95%',
+          }}
         ></input>
         <br />
         <br />
@@ -161,11 +206,29 @@ const Sign = (props) => {
           onChange={(e) => {
             setPhone(e.target.value);
           }}
+          style={{
+            marginBottom: '20px',
+            padding: '10px',
+            border: 'none',
+            borderRadius: '5px',
+            boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+            fontSize: '1.2rem',
+            width: '95%',
+          }}
         ></input>
 
         <br />
         <br />
-        <input type="submit" onClick={submitHandler}></input>
+        <input type="submit" onClick={submitHandler}
+          style={{
+            marginBottom: '20px',
+            padding: '10px',
+            border: 'none',
+            borderRadius: '5px',
+            boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+            fontSize: '1.2rem',
+            width: '95%',
+          }}></input>
       </div>
     );
   }
