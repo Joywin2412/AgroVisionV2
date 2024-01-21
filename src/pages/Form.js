@@ -6,7 +6,7 @@ import Forms from "./Forms.js";
 import Data from "./Data.js";
 import Soilcrop from "./soilcrop.js";
 import { Optimal } from "./soilcrop.js";
-import "./form.css"
+import "./form12.css"
 function Form(props) {
   console.log(props);
   const [data, setData] = useState([]);

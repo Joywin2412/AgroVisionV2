@@ -2,17 +2,18 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Grid, Hidden, Paper } from "@material-ui/core";
-import Login from "../components/login/Login";
-import Header from "../components/header/Header";
-import Sidebar from "../components/sidebar/Sidebar";
-import Contacts from "../components/contacts/Contacts";
-import Stories from "../components/stories/Stories";
-import Form from "../components/form/Form";
-import Posts from "../components/posts/Posts";
-import { LoginAction, LogoutAction } from "../store/actions/auth";
+import Login from "./components/login/Login";
+import Header from "./components/header/Header";
+import Sidebar from "./components/sidebar/Sidebar";
+import Contacts from "./components/contacts/Contacts";
+import Stories from "./components/stories/Stories";
+import Form from "./components/form/Form";
+import Posts from "./components/posts/Posts";
+import { LoginAction, LogoutAction } from "./store/actions/auth";
 // import { auth } from "../firebase";
-import { lightPrimary } from "../assets/Colors";
-import Style from "../Style";
+import { lightPrimary } from "./assets/Colors";
+import Navbar from 'Navbar';
+import Style from "Style";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -46,10 +47,10 @@ const App = () => {
         style={{ backgroundColor: !mode && lightPrimary }}
       >
 
+
         <Grid className={classes.app}>
           <Grid item container className={classes.app__header}>
             {/* ----Header---- */}
-            <Header />
           </Grid>
           <Grid item container className={classes.app__body}>
             {/* ----Body---- */}
